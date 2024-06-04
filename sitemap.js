@@ -185,23 +185,23 @@ function displayToc(filter) {
    var tocHead3 = 'تسميات';
    var tocTool3 = '';
    if (sortBy == "titleasc") { 
-      tocTool1 += ' (descending)';
-      tocTool2 += ' (newest first)';
+      tocTool1 += ' (تنازلي)';
+      tocTool2 += ' (الأحدث أولاً)';
    }
    if (sortBy == "titledesc") { 
-      tocTool1 += ' (ascending)';
-      tocTool2 += ' (newest first)';
+      tocTool1 += ' (تصاعدي)';
+      tocTool2 += ' (الأحدث أولاً)';
    }
    if (sortBy == "dateoldest") { 
-      tocTool1 += ' (ascending)';
-      tocTool2 += ' (newest first)';
+      tocTool1 += ' (تصاعدي)';
+      tocTool2 += ' (الأحدث أولاً)';
    }
    if (sortBy == "datenewest") { 
-      tocTool1 += ' (ascending)';
-      tocTool2 += ' (oldest first)';
+      tocTool1 += ' (تصاعدي)';
+      tocTool2 += ' (الأقدم أولا)';
    }
    if (postFilter != '') {
-      tocTool3 = 'Click to show all posts';
+      tocTool3 = 'انقر لإظهار كافة المشاركات';
    }
    tocTable += '<table>';
    tocTable += '<tr>';
@@ -231,8 +231,8 @@ function displayToc(filter) {
    if (numDisplayed == postTitle.length) {
       var tocNote = '<span class="toc-note">عرض الكل ' + postTitle.length + ' مقالات<br/></span>'; }
    else {
-      var tocNote = '<span class="toc-note">عرض ' + numDisplayed + ' المقالات الموسومة حسب \'';
-      tocNote += postFilter + '\' of '+ postTitle.length + ' posts total<br/></span>';
+      var tocNote = '<span class="toc-note">عرض ' + numDisplayed + ' مقال موسوم حسب \'';
+      tocNote += postFilter + '\' من '+ postTitle.length + ' مجموع مقال<br/></span>';
    }
    tocdiv.innerHTML = tocNote + tocTable;
 } // end of displayToc
@@ -258,12 +258,12 @@ function showToc() {
      var toclink = document.getElementById("toclink");
    
   }
-  else { alert("Just wait... TOC is loading"); }
+  else { alert("فقط انتظر... يتم تحميل جدول المحتويات"); }
 }
 
 function hideToc() {
   var tocdiv = document.getElementById("toc");
   tocdiv.innerHTML = '';
   var toclink = document.getElementById("toclink");
-  toclink.innerHTML = '<a href="#" onclick="scroll(0,0); showToc(); Effect.toggle('+"'toc-result','blind');"+'">» Show Table of Contents</a> <img src="http://chenkaie.blog.googlepages.com/new_1.gif"/>';
+  toclink.innerHTML = '<a href="#" onclick="scroll(0,0); showToc(); Effect.toggle('+"'toc-result','blind');"+'">» إظهار جدول المحتويات</a> <img src="http://chenkaie.blog.googlepages.com/new_1.gif"/>';
 }
