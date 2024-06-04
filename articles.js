@@ -73,7 +73,7 @@ function labelthumbs(json) {
         var flag = 0;
         document.write('<br>');
         if (showpostdate == true) {
-            towrite = towrite + cdday +''+ monthnames[parseInt(cdmonth, 10)] +'' + cdyear;
+            towrite = towrite + cdday +' '+ monthnames[parseInt(cdmonth, 10)] +' ' + cdyear;
             flag = 1;
         }
         if (showcommentnum == true) {
