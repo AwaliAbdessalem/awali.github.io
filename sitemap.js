@@ -201,7 +201,7 @@ function displayToc(filter) {
       tocTool2 += ' (الأقدم أولا)';
    }
    if (postFilter != '') {
-      tocTool3 = 'انقر لإظهار كافة المشاركات';
+      tocTool3 = 'انقر لإظهار كافة المقالات';
    }
    tocTable += '<table>';
    tocTable += '<tr>';
@@ -229,10 +229,10 @@ function displayToc(filter) {
    }
    tocTable += '</table>';
    if (numDisplayed == postTitle.length) {
-      var tocNote = '<span class="toc-note">عرض الكل ' + postTitle.length + ' مقالات<br/></span>'; }
+      var tocNote = '<span class="toc-note">عرض الكل ' + postTitle.length + ' مقال<br/></span>'; }
    else {
       var tocNote = '<span class="toc-note">عرض ' + numDisplayed + ' مقال موسوم حسب \'';
-      tocNote += postFilter + '\' من '+ postTitle.length + ' مجموع مقال<br/></span>';
+      tocNote += postFilter + '\' من مجموع '+ postTitle.length + '  مقال<br/></span>';
    }
    tocdiv.innerHTML = tocNote + tocTable;
 } // end of displayToc
