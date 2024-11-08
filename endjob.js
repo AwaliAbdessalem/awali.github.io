@@ -1,17 +1,4 @@
-<div dir="rtl"><!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<div class="job" end-date="2024-06-01T23:59:59">
-  <h2>Frontend Developer</h2>
-  <p class="status"></p>
-</div>
-
-<div class="job" end-date="2024-11-10T23:59:59">
-  <h2>Backend Developer</h2>
-  <p class="status"></p>
-</div>
-
-<script>
   document.querySelectorAll(".job").forEach(job => {
     const endDate = new Date(job.getAttribute("end-date"));
     const statusElement = job.querySelector(".status");
@@ -43,7 +30,4 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
   });
-</script>
 
-<!-- Bootstrap JS (optional for other Bootstrap components) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
