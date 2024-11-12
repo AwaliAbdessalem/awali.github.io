@@ -20,7 +20,7 @@
         // Update the countdown in a Bootstrap alert
         statusElement.innerHTML = `
           <div class="alert alert-success" role="alert">
-            التسجيل مفتوح - باقي ${days} يوم و ${hours} ساعة 
+           التسجيل مفتوح - ⏱ باقي ${days} يوم و ${hours} ساعة
           </div>
         `;
       }
