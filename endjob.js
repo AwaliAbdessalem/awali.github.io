@@ -18,10 +18,14 @@
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
            // Determine display format
-        const countdownText = days > 0 
-          ? `⏱ باقي ${days} يوم و${hours} ساعة `
-          : `⏱ باقي ${hours} ساعة و${minutes} دقيقة `;
-
+          let countdownText;
+        if (days > 0) {
+          countdownText = `⏱ باقي ${days} يوم و${hours} ساعة`;
+        } else if (hours > 0) {
+          countdownText = `⏱ باقي ${hours} ساعة و${minutes} دقيقة`;
+        } else {
+          countdownText = `⏱ باقي ${minutes} دقيقة و${seconds} ثانية`;
+        }
         // Update the countdown in a Bootstrap alert
         statusElement.innerHTML = `
           <div class="alert alert-success" role="alert">
