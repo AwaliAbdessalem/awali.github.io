@@ -17,10 +17,15 @@
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
+           // Determine display format
+        const countdownText = days > 0 
+          ? `⏱ باقي ${days} يوم و${hours} ساعة `
+          : `⏱ باقي ${hours} ساعة و${minutes} دقيقة `;
+
         // Update the countdown in a Bootstrap alert
         statusElement.innerHTML = `
           <div class="alert alert-success" role="alert">
-           التسجيل مفتوح - ⏱ باقي ${days} يوم و ${hours} ساعة
+            التسجيل مفتوح - ${countdownText}
           </div>
         `;
       }
