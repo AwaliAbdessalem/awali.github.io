@@ -12,6 +12,7 @@
         statusElement.innerHTML = '<div class="alert alert-danger" role="alert">انتهى أجل التسجيل</div>';
       } else {
         // Calculate days, hours, minutes, and seconds
+        const totalHours = Math.floor(timeRemaining / (1000 * 60 * 60));
         const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
@@ -19,7 +20,9 @@
 
            // Determine display format
           let countdownText;
-        if (days > 0) {
+       if (days === 1 && hours === 0) {
+          countdownText = `⏱ باقي ${totalHours} ساعة`; // If exactly 1d 0h, show total hours
+        } else if (days > 0) {
           countdownText = `⏱ باقي ${days} يوم و${hours} ساعة`;
         } else if (hours > 0) {
           countdownText = `⏱ باقي ${hours} ساعة و${minutes} دقيقة`;
