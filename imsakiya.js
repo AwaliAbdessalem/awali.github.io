@@ -1,81 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أوقات الإمساك والإفطار - تونس</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            direction: rtl;
-            font-family: Arial, sans-serif;
-        }
 
-        .widget-container {
-            width: 300px;
-            height: 250px;
-            overflow: hidden;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            background-color: #f8f9fa;
-            position: relative;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .ticker-title {
-          font-family:Cairo;
-            font-weight: bold;
-            text-align: center;
-            color: blue;
-            padding: 5px 0;
-            background-color: #fff;
-            border-bottom: 2px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .ticker-container {
-          font-family:Cairo;
-            flex-grow: 1;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .ticker-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            position: absolute;
-            width: 100%;
-        }
-
-        .ticker-item {
-            padding: 8px;
-            text-align: center;
-            background-color: #fff;
-            margin-bottom: 5px;
-            border-radius: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body class="bg-light">
-    <div class="container my-3 d-flex justify-content-center">
-        <div class="widget-container" id="widget">
-            <h6 class="ticker-title">📢 أوقات الإمساك والإفطار اليوم</h6>
-          <h6 id='date' align='center'></h6> <h6 id='date2' align='center'></h6>
-            <div class="ticker-container">
-                <ul class="ticker-list" id="timesTicker">
-                    <li class="ticker-item">جارٍ تحميل الأوقات...</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <script >
    function showDate() {
             const now = new Date();
             
@@ -183,8 +106,4 @@ widget.addEventListener("touchend", startTickerAnimation);
 // تشغيل الوظيفة عند تحميل الصفحة
 updateTicker();
 
-  
-  </script>
-</body>
-</html>
 
