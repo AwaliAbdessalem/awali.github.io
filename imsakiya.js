@@ -39,7 +39,7 @@ function getRandomColor() {
 // جلب أوقات الصلاة دفعة واحدة
 async function fetchAllPrayerTimes() {
     const requests = governorates.map(city =>
-        fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Tunisia&method=18`)
+        fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=TN&method=18`)
             .then(response => response.json())
             .then(data => ({
                 city,
