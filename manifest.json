@@ -11,12 +11,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://urls.ovh/pwa/web-app-manifest-192x192.png",
+      "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFzHAWcE5y2rmMp3PFS3kN4yMtNw6e9b6gTZuMXDu9nlJN4HebwtVufvIIVwfGj2VHPpwr1bKJjJZ_556Yoff8jwV2janbfIxUYB89yKZjE9bnG7lxE256TdHrSL5kO7ocCP30-AygkVgaIcRKgasxB-_oroq5gR9c82hbxWHrdE067r1xsFSkl63qTyiH/s1600/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://urls.ovh/pwa/web-app-manifest-512x512.png",
+      "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgT7RPMxPNiWEyKTC43qEsXPshAL4Ylp_jiAcBXC0u8GtyENnR8A7zJlycqsnbMlWa5THrta6k3xC0rv_0qwYLgZ2qKpgiJ3U5gOMk8_IK_nhU0vIeonHYtbfcoUKjiHHQA4EeWP351Zdl4krw5f1q0hsrpVj9iMZT1Fjk3VPMwE_mobCHXmyx4V8ctEJBv/s1600/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
