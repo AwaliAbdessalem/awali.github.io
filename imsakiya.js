@@ -6,7 +6,7 @@
 // 1 = + يوم
 // -1 = - يوم
 // ===============================
-const hijriAdjustment = -1;
+const hijriAdjustment = 1;
 
 
 
