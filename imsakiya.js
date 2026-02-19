@@ -81,11 +81,34 @@ showDate2();
 // ===============================
 // 🏙 قائمة الولايات التونسية
 // ===============================
+// ===============================
+// 🏙 Tunisian Governorates (English for API)
+// ===============================
 const governorates = [
-    "تونس", "أريانة", "بن عروس", "منوبة", "بنزرت", "نابل", "زغوان",
-    "سوسة", "المنستير", "المهدية", "صفاقس", "القيروان", "القصرين", "سيدي بوزيد",
-    "قفصة", "توزر", "قبلي", "مدنين", "تطاوين", "الكاف", "سليانة", "جندوبة"
+    { ar: "تونس", en: "Tunis" },
+    { ar: "أريانة", en: "Ariana" },
+    { ar: "بن عروس", en: "Ben Arous" },
+    { ar: "منوبة", en: "Manouba" },
+    { ar: "بنزرت", en: "Bizerte" },
+    { ar: "نابل", en: "Nabeul" },
+    { ar: "زغوان", en: "Zaghouan" },
+    { ar: "سوسة", en: "Sousse" },
+    { ar: "المنستير", en: "Monastir" },
+    { ar: "المهدية", en: "Mahdia" },
+    { ar: "صفاقس", en: "Sfax" },
+    { ar: "القيروان", en: "Kairouan" },
+    { ar: "القصرين", en: "Kasserine" },
+    { ar: "سيدي بوزيد", en: "Sidi Bouzid" },
+    { ar: "قفصة", en: "Gafsa" },
+    { ar: "توزر", en: "Tozeur" },
+    { ar: "قبلي", en: "Kebili" },
+    { ar: "مدنين", en: "Medenine" },
+    { ar: "تطاوين", en: "Tataouine" },
+    { ar: "الكاف", en: "El Kef" },
+    { ar: "سليانة", en: "Siliana" },
+    { ar: "جندوبة", en: "Jendouba" }
 ];
+
 
 let tickerInterval;
 
@@ -105,17 +128,17 @@ function getRandomColor() {
 // 🕌 جلب أوقات الصلاة
 // ===============================
 async function fetchAllPrayerTimes() {
-    const requests = governorates.map(city =>
-        fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Tunisia&method=18`)
+    const requests = governorates.map(gov =>
+        fetch(`https://api.aladhan.com/v1/timingsByCity?city=${gov.en}&country=Tunisia&method=18`)
             .then(response => response.json())
             .then(data => ({
-                city,
+                city: gov.ar, // show Arabic name in ticker
                 imsak: data.data.timings.Imsak,
                 maghrib: data.data.timings.Maghrib
             }))
             .catch(error => {
-                console.error(`خطأ في جلب البيانات لـ ${city}:`, error);
-                return { city, imsak: "00:00", maghrib: "00:00" };
+                console.error(`Error fetching data for ${gov.en}:`, error);
+                return { city: gov.ar, imsak: "00:00", maghrib: "00:00" };
             })
     );
 
