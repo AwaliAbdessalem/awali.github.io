@@ -117,19 +117,26 @@ async function fetchAllPrayerTimes() {
     const requests = governorates.map(city =>
         fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Tunisia&method=18`)
             .then(response => response.json())
-            .then(data => ({
-                city,
-                imsak: data.data.timings.Imsak,
-                maghrib: data.data.timings.Maghrib
-            }))
-            .catch(error => {
-                console.error(`خطأ في جلب البيانات لـ ${city}:`, error);
-                return { city, imsak: "00:00", maghrib: "00:00" };
+            .then(data => {
+                if (!data || !data.data || !data.data.timings) {
+                    return null;
+                }
+
+                return {
+                    city,
+                    imsak: data.data.timings.Imsak || "--:--",
+                    maghrib: data.data.timings.Maghrib || "--:--"
+                };
             })
+            .catch(() => null)
     );
 
-    return Promise.all(requests);
+    const results = await Promise.all(requests);
+
+    // نحذف أي مدينة فشل فيها الجلب
+    return results.filter(item => item !== null);
 }
+
 
 
 
@@ -137,12 +144,23 @@ async function fetchAllPrayerTimes() {
 // 🔄 تحديث الشريط
 // ===============================
 async function updateTicker() {
-    const prayerTimes = await fetchAllPrayerTimes();
 
     const tickerList = document.getElementById("timesTicker");
+
+    // عرض رسالة تحميل
+    tickerList.innerHTML = "<li class='ticker-item'>⏳ جاري تحميل أوقات الصلاة...</li>";
+
+    const prayerTimes = await fetchAllPrayerTimes();
+
     tickerList.innerHTML = "";
 
+    if (prayerTimes.length === 0) {
+        tickerList.innerHTML = "<li class='ticker-item'>⚠ تعذر تحميل البيانات</li>";
+        return;
+    }
+
     prayerTimes.forEach(({ city, imsak, maghrib }) => {
+
         const listItem = document.createElement("li");
         listItem.className = "ticker-item";
 
@@ -156,6 +174,7 @@ async function updateTicker() {
 
     startTickerAnimation();
 }
+
 
 
 
