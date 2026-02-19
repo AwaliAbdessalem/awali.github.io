@@ -33,31 +33,53 @@ showDate();
 // ===============================
 // 🌙 التاريخ الهجري (API + تعديل يدوي)
 // ===============================
-async function showDate2() {
-    try {
-        const now = new Date();
-        const day = now.getDate();
-        const month = now.getMonth() + 1;
-        const year = now.getFullYear();
+function showDate2() {
 
-        const response = await fetch(
-            `https://api.aladhan.com/v1/gToH?date=${day}-${month}-${year}&adjustment=${hijriAdjustment}`
-        );
+    const now = new Date();
 
-        const data = await response.json();
-        const hijri = data.data.hijri;
+    // تاريخ بداية رمضان 2026 في تونس
+    const ramadanStart = new Date("2026-02-19");
+    const ramadanEnd = new Date("2026-03-20"); // 30 رمضان تقريبًا
+
+    const hijriMonths = [
+        "محرم", "صفر", "ربيع الأول", "ربيع الثاني",
+        "جمادى الأولى", "جمادى الآخرة",
+        "رجب", "شعبان", "رمضان",
+        "شوال", "ذو القعدة", "ذو الحجة"
+    ];
+
+    const weekdays = [
+        "الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"
+    ];
+
+    // ✅ إذا كنا داخل رمضان 2026
+    if (now >= ramadanStart && now <= ramadanEnd) {
+
+        const diffTime = now - ramadanStart;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        const ramadanDay = diffDays + 1; // اليوم من رمضان
 
         const formattedHijri =
-            hijri.weekday.ar + " " +
-            hijri.day + " " +
-            hijri.month.ar + " " +
-            hijri.year + " هـ";
+            weekdays[now.getDay()] + " " +
+            ramadanDay + " رمضان 1447 هـ";
 
         document.getElementById("date2").innerText = formattedHijri;
 
-    } catch (error) {
-        document.getElementById("date2").innerText = "تعذر تحميل التاريخ الهجري";
-        console.error("Hijri error:", error);
+    } else {
+
+        // خارج رمضان → نحسب عادي بالمتصفح
+        const formattedDate = now.toLocaleString(
+            'ar-TN-u-ca-islamic',
+            {
+                year: 'numeric',
+                month: 'long',
+                day:'numeric',
+                weekday: 'long'
+            }
+        );
+
+        document.getElementById("date2").innerText = formattedDate;
     }
 }
 
