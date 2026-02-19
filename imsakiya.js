@@ -138,7 +138,7 @@ async function fetchAllPrayerTimes() {
             }))
             .catch(error => {
                 console.error(`Error fetching data for ${gov.en}:`, error);
-                return { city: gov.ar, imsak: "00:00", maghrib: "00:00" };
+                return { city: gov.ar, imsak: "--:--", maghrib: "--:--" };
             })
     );
 
